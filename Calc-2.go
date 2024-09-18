@@ -41,9 +41,7 @@ func main() {
 		result = number1 + number2
 	case "-":
 		result = number1 - number2
-		if result <= 0 {
-			panic("PANIK")
-		}
+
 	case "*":
 		result = number1 * number2
 	case "/":
@@ -53,6 +51,9 @@ func main() {
 	}
 
 	if isItRoman(variables[0]) && isItRoman(variables[2]) {
+		if result < 0 {
+			panic("PANIK")
+		}
 		resultArab := arabInRoman(result)
 		fmt.Print(resultArab)
 	} else {
