@@ -53,6 +53,9 @@ func main() {
 	}
 
 	if isItRoman(variables[0]) && isItRoman(variables[2]) {
+		if result == 0 {
+			panic("PANIC")
+		}
 		resultArab := arabInRoman(result)
 		fmt.Print(resultArab)
 	} else {
