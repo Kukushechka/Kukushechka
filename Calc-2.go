@@ -41,7 +41,9 @@ func main() {
 		result = number1 + number2
 	case "-":
 		result = number1 - number2
-
+		if result <= 0 {
+			panic("PANIK")
+		}
 	case "*":
 		result = number1 * number2
 	case "/":
@@ -51,9 +53,6 @@ func main() {
 	}
 
 	if isItRoman(variables[0]) && isItRoman(variables[2]) {
-		if result < 0 {
-			panic("PANIK")
-		}
 		resultArab := arabInRoman(result)
 		fmt.Print(resultArab)
 	} else {
@@ -103,17 +102,19 @@ func arabInRoman(result int) string {
 	for i := 0; i < len(rumNumbLow); i++ {
 		romanNumbersMap[i] = rumNumbLow[i]
 	}
+
 	l := 9
 	for i := 1; i <= l; i++ {
-		for j := 1; j <= l; j++ {
+		for j := 0; j <= l; j++ {
 			romanNumbersMap[(i)*10+j] = rumNumbBIG[i-1] + rumNumbLow[j] // что то здесь наворотил
 		}
 	}
-	for i := 0; i < 10; i++ {
+	for i := 1; i <= 10; i++ {
 		for j := 10; j < 100; j++ {
-			romanNumbersMap[(i+1)*10] = rumNumbBIG[i]
+			romanNumbersMap[(i-1)*10+9] = rumNumbBIG[i-1]
 		}
 	}
+
 	resultRoman := romanNumbersMap[result-1]
 	return resultRoman
 }
