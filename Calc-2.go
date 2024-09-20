@@ -14,10 +14,11 @@ func main() {
 	fmt.Print("Введите числа для решения римскими или арабскими цифрами: ")
 	myscanner.Scan()
 	input := myscanner.Text()
-	var variables [3]string
-	variables = [3]string(strings.Split(input, " "))
+	var variables []string
+	variables = []string(strings.Split(input, " "))
+
 	if len(variables) > 3 {
-		panic("Слишком много")
+		panic("BREAK")
 	}
 
 	var number1, number2 int
